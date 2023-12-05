@@ -4,3 +4,19 @@ server:
 spring:
   application:
     name: user
+
+  r2dbc:
+    # sslmode=require 연결 시 ssl을 필수 사용하는 옵션
+    url: ENC(RjiomYkBQB5IdrQ1d+gjeMaitqDPNHoCOJV1O+LCkMyHC/8qlyxA2AkNkzIshmJiS0Uay77s7lj/mcyvNNanHAV3Gjt8+1QI2UxidQWw+G+a2hlJOlsLVTIlCNGsKPfGv+PF3s6QYjSJ12noqoTELMZPaap+qbJ/ABQNcU1XgZ4=)
+    username: ENC(9uEJG7COrIQU30XG791gmwPAucn09mZz0Kw5Rv4vl7I=)
+    password: ENC(lmQzYti+1WexHSl5e1lMwDV6iCs2YrX8rx6rnOCfjmI=)
+
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
+logging:
+  level:
+    io.r2dbc.postgresql.QUERY: TRACE # for queries
+    io.r2dbc.postgresql.PARAM: TRACE # for parameters
