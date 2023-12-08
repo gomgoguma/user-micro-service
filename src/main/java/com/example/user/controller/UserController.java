@@ -18,7 +18,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping
+    @GetMapping("/info")
     public Mono<String> user() {
         log.info("user service");
         return Mono.just("user micro service");

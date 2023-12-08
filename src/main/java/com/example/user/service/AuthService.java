@@ -36,6 +36,8 @@ public class AuthService {
                         obj.setResMsg("로그인 성공");
                         obj.setAccessToken(jwtConfig.createAccessToken(auth.getUsername()));
                         ResponseCookie cookie = ResponseCookie.from("refreshToken", jwtConfig.createRefreshToken(auth.getUsername()))
+                                .secure(true)
+                                .httpOnly(true)
                                 .maxAge(60*60*24*7) // 쿠키 유효 시간 (초)
                                 .domain("localhost")
                                 .path("/")    // 쿠키 경로

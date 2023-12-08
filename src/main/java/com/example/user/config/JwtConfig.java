@@ -9,8 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.security.Key;
-import java.util.Base64;
-import java.util.Date;
+import java.util.*;
 
 @Configuration
 public class JwtConfig {
@@ -28,8 +27,12 @@ public class JwtConfig {
     }
 
     public String createAccessToken(String username) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("username", username);
+        claims.put("role", List.of("user"));
+
         return Jwts.builder()
-                .setSubject(username)
+                .setClaims(claims)
                 .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 10))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
