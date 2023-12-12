@@ -29,6 +29,7 @@ public class AuthService {
     private final JwtConfig jwtConfig;
 
     public Mono<LoginResObj> login(LoginReqObj loginReqObj, ServerHttpResponse response) {
+        log.info("로드밸런싱 테스트");
         return authRepository.findByUsername(loginReqObj.getUsername())
                 .map(auth -> {
                     LoginResObj obj = new LoginResObj();
